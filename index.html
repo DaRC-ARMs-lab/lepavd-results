@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>LE-PAVD Results</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; color:#111; background:#fff; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 28px 18px 60px; }
+    h1 { font-size: 30px; margin: 0 0 6px; }
+    .sub { color:#444; margin: 0 0 18px; }
+    .card { border:1px solid #e6e6e6; border-radius: 14px; padding: 16px; margin: 14px 0; }
+    img, video { width: 100%; height: auto; border-radius: 10px; border:1px solid #eee; }
+    table { width:100%; border-collapse: collapse; font-size: 15px; }
+    th, td { padding: 10px 8px; border-bottom: 1px solid #eee; text-align: left; }
+    th { background:#fafafa; }
+    .row { display:grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 900px){ .row { grid-template-columns: 1fr 1fr; } }
+    .muted { color:#555; font-size: 14px; }
+    a { color:#0b66ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>LE-PAVD Closed-Loop NMPC Results</h1>
+    <p class="sub">DDM vs LE-PAVD on ETHZ / ETHZMobil tracks (closed-loop NMPC). Assets and scripts: <a href="https://github.com/<ORG>/<REPO>">GitHub repo</a>.</p>
+
+    <div class="card">
+      <h2 style="margin:0 0 10px; font-size:20px;">Trajectory Comparison (ETHZMobil)</h2>
+      <img src="assets/ethzmobil_traj.png" alt="Trajectory comparison ETHZMobil"/>
+      <p class="muted">Dashed: raceline. Red: DDM. Green: LE-PAVD.</p>
+    </div>
+
+    <div class="card">
+      <h2 style="margin:0 0 10px; font-size:20px;">States and Force Profiles</h2>
+      <div class="row">
+        <img src="assets/ethzmobil_states.png" alt="Velocities ETHZMobil"/>
+        <img src="assets/ethzmobil_forces.png" alt="Forces ETHZMobil"/>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 style="margin:0 0 10px; font-size:20px;">Closed-Loop Summary</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Model</th><th>Track</th><th>Lap Time (s)</th><th>Avg. vx (m/s)</th><th>Avg. vy (m/s)</th><th>Avg. ω (rad/s)</th><th>Violations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>DDM</td><td>ETHZ</td><td>8.6</td><td>1.88</td><td>-0.06</td><td>0.60</td><td>None</td></tr>
+          <tr><td>LE-PAVD</td><td>ETHZ</td><td>7.1</td><td>2.10</td><td>-0.05</td><td>0.73</td><td>None</td></tr>
+          <tr><td>DDM</td><td>ETHZMobil</td><td>6.3</td><td>1.78</td><td>0.12</td><td>-0.14</td><td>None</td></tr>
+          <tr><td>LE-PAVD</td><td>ETHZMobil</td><td>5.7</td><td>1.90</td><td>0.06</td><td>-1.52</td><td>None</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2 style="margin:0 0 10px; font-size:20px;">Animation</h2>
+      <!-- Use GIF for universal compatibility -->
+      <img src="assets/combined_DDM_vs_LEPAVD_ETHZMobil.gif" alt="Animation"/>
+      <p class="muted">If the GIF is heavy, consider using MP4 below:</p>
+      <!-- Or MP4 (works in most browsers) -->
+      <!-- <video controls muted playsinline src="assets/combined_DDM_vs_LEPAVD_ETHZMobil.mp4"></video> -->
+    </div>
+
+    <p class="muted">Last updated: <span id="d"></span></p>
+  </div>
+
+  <script>
+    document.getElementById("d").textContent = new Date().toISOString().slice(0,10);
+  </script>
+</body>
+</html>
