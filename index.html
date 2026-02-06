@@ -32,6 +32,15 @@
 </head>
 
 <body>
+
+  <link rel="preload" as="image" href="assets/combined_DDM_vs_LEPAVD_ETHZMobil.gif">
+  <link rel="preload" as="image" href="assets/combined_DDM_vs_LEPAVD_ETHZ.gif">
+  <link rel="preload" as="image" href="assets/ETHZMobil_velocities.png">
+  <link rel="preload" as="image" href="assets/ETHZMobil_forces.png">
+  <link rel="preload" as="image" href="assets/ETHZ_velocities.png">
+  <link rel="preload" as="image" href="assets/ETHZ_forces.png">
+
+
   <div class="wrap">
 
     <h1>LE-PAVD vs DDM Closed-Loop NMPC Results</h1>
@@ -39,7 +48,7 @@
       DDM vs LE-PAVD runs on ETHZ / ETHZMobil tracks (closed-loop NMPC).
       <span class="muted">Pure Pursuit is used for warm-up, 
         then NMPC is applied once sufficient history is available. 
-        Both Models use the same NMPC formulation, but with different dynamics. </br>
+        Both Models use the same NMPC formulation, but with different dynamics. <br>
         Both models are trained on ETHZ track data and then evaluated on both ETHZ and completely unseen ETHZMobil tracks.
       
       </span>
@@ -157,6 +166,12 @@
 
     // Ensure defaults are consistent on load
     setTrack("ETHZMobil");
+    ["anim","vel","force"].forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener("error", () => {
+        el.alt = el.alt + " (failed to load)";
+      });
+    });
   </script>
 </body>
 </html>
