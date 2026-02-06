@@ -19,23 +19,41 @@
     .muted { color:#555; font-size: 14px; }
     a { color:#0b66ff; text-decoration: none; }
     a:hover { text-decoration: underline; }
+
+    footer {
+        margin-top: 40px;
+        padding-top: 16px;
+        border-top: 1px solid #eee;
+        text-align: center;
+        color: #666;
+        font-size: 14px;
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <h1>LE-PAVD Closed-Loop NMPC Results</h1>
-    <p class="sub">DDM vs LE-PAVD on ETHZ / ETHZMobil tracks (closed-loop NMPC). Assets and scripts: <a href="https://github.com/<ORG>/<REPO>">GitHub repo</a>.</p>
+    <h1>LE-PAVD vs DDM Closed-Loop NMPC Results</h1>
+    <p class="sub">
+      DDM vs LE-PAVD on ETHZ / ETHZMobil tracks (closed-loop NMPC).
+      <span class="muted">Pure Pursuit is used for warm-up, then NMPC is applied once sufficient history is available.</span>
+    </p>
 
+    <!-- <div class="card">
+      <h2 style="margin:0 0 10px; font-size:20px;">Trajectory (ETHZMobil)</h2>
+      <img src="assets/DDM_vs_LEPAVD_ETHZMobil_clean.png" alt="Trajectory comparison ETHZMobil"/>
+      <p class="muted">Dashed: raceline. Red: DDM. Green: LE-PAVD.</p>
+    </div> -->
     <div class="card">
-      <h2 style="margin:0 0 10px; font-size:20px;">Animation</h2>
-      <!-- Use GIF for universal compatibility -->
-      <img src="assets/DDM_vs_LEPAVD_ETHZMobil_clean.png" alt="Animation"/>
-      <!-- Or MP4 (works in most browsers) -->
+      <h2 style="margin:0 0 10px; font-size:20px;">Lap run (ETHZMobil)</h2>
+      <img src="assets/combined_DDM_vs_LEPAVD_ETHZMobil.gif" alt="Animation ETHZMobil"/>
+
       <!-- <video controls muted playsinline src="assets/combined_DDM_vs_LEPAVD_ETHZMobil.mp4"></video> -->
+     
+      <!-- <p class="muted">Tip: MP4 is recommended if the GIF is large.</p> -->
     </div>
 
     <div class="card">
-      <h2 style="margin:0 0 10px; font-size:20px;">States and Force Profiles</h2>
+      <h2 style="margin:0 0 10px; font-size:20px;">States and Force Profiles (ETHZMobil)</h2>
       <div class="row">
         <img src="assets/ETHZMobil_velocities.png" alt="Velocities ETHZMobil"/>
         <img src="assets/ETHZMobil_Forces.png" alt="Forces ETHZMobil"/>
@@ -43,11 +61,17 @@
     </div>
 
     <div class="card">
-      <h2 style="margin:0 0 10px; font-size:20px;">Closed-Loop Summary</h2>
+      <h2 style="margin:0 0 10px; font-size:20px;">Closed-Loop results Summary</h2>
       <table>
         <thead>
           <tr>
-            <th>Model</th><th>Track</th><th>Lap Time (s)</th><th>Avg. vx (m/s)</th><th>Avg. vy (m/s)</th><th>Avg. ω (rad/s)</th><th>Violations</th>
+            <th>Model</th>
+            <th>Track</th>
+            <th>Lap Time (s)</th>
+            <th>Avg. v<sub>x</sub> (m/s)</th>
+            <th>Avg. v<sub>y</sub> (m/s)</th>
+            <th>Avg. ω (rad/s)</th>
+            <th>Violations</th>
           </tr>
         </thead>
         <tbody>
@@ -59,13 +83,7 @@
       </table>
     </div>
 
-    <div class="card">
-      <h2 style="margin:0 0 10px; font-size:20px;">Animation</h2>
-      <!-- Use GIF for universal compatibility -->
-      <img src="assets/combined_DDM_vs_LEPAVD_ETHZMobil.gif" alt="Animation"/>
-      <!-- Or MP4 (works in most browsers) -->
-      <!-- <video controls muted playsinline src="assets/combined_DDM_vs_LEPAVD_ETHZMobil.mp4"></video> -->
-    </div>
+
 
     <p class="muted">Last updated: <span id="d"></span></p>
   </div>
@@ -73,5 +91,18 @@
   <script>
     document.getElementById("d").textContent = new Date().toISOString().slice(0,10);
   </script>
+
+
+
+
+    <footer>
+    © <span id="y"></span> DaRC-ARMS Laboratory, University of Dayton.  
+    All rights reserved.
+
+    <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+
+
 </body>
 </html>
