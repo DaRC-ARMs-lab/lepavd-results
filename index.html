@@ -28,6 +28,12 @@
       color: #666;
       font-size: 14px;
     }
+    .method-img {
+      max-height: 300px;
+      width: 100%;
+      object-fit: contain;
+    }
+
   </style>
 </head>
 
@@ -54,6 +60,11 @@
       </span>
     </p>
 
+
+
+
+
+
     <div class="card" style="margin-top:10px;">
       <strong>Select track:</strong>
       <label style="margin-left:12px;">
@@ -71,6 +82,50 @@
       <img id="anim" src="assets/combined_DDM_vs_LEPAVD_ETHZMobil.gif" alt="Animation"/>
       <p class="muted">Green is LE-PAVD, Red is DDM.</p>
     </div>
+
+    <details class="card">
+      <summary style="font-size:18px; cursor:pointer; font-weight:600;">
+        Modeling Assumptions and State Definitions
+      </summary>
+
+      <p class="muted">
+        LE-PAVD combines a recurrent neural dynamics predictor with a physics guard layer
+        that enforces slip-angle consistency, load-dependent tire forces, and physically
+        admissible accelerations within the NMPC loop.
+      </p>
+
+      <div class="row">
+      
+        <div>
+          <img src="assets/vehicle_dynamics.png"
+              class="method-img"
+              loading="lazy"
+              alt="Vehicle dynamics and forces"/>
+          <p class="muted">
+            <strong>Vehicle dynamics convention.</strong>
+            Definition of longitudinal/lateral velocities, yaw rate, slip angles, and
+            tire-force directions used by the physics guard layer in closed-loop NMPC.
+          </p>
+        </div>
+        
+        
+        <div>
+            <img src="assets/lepavd_architecture.png"
+                class="method-img"
+                loading="lazy"
+                alt="LE-PAVD architecture"/>
+            <p class="muted">
+              <strong>Model architecture.</strong>
+              A GRU-based predictor estimates latent dynamics, while a physics guard layer
+              computes tire forces and accelerations using physically consistent constraints.
+            </p>
+        </div>
+
+      </div>
+    </details>
+
+
+
 
     <div class="card">
       <h2 id="profilesTitle" style="margin:0 0 10px; font-size:20px;">States and Force Profiles (ETHZMobil)</h2>
